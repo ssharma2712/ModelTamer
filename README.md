@@ -14,7 +14,7 @@ MT_sampler.R    : Create subsample and upsample dataset (SU dataset) using user 
 MT_aggregator.R : Extract analysis information from IQTREE output. 
 MT_automatic.R  : An aumtomated tool for performing ModelTamer. 
 ```
-The "data" directory contains one example empirical dataset which has been analyzed in the original article.  
+The "Example" directory contains one example empirical dataset which has been analyzed in the original article.  
 ```
 Plants.fas      : This emprical dataset has 16 platns sequences and 4,246,454 sites with 190,352 distinct site patterns. The otimal model of substitution is GTR+G+R which is determined by analyzing the full MSA. 
 
@@ -57,8 +57,8 @@ max.iter          : a numeric input argument that specifies the number of steps 
 ModelTamer uses ModelFinder from IQTREE by default for performing calculating the Maximum Likelihood (ML) fit for each of the model tested. The IQTREE software can be downloaded from http://www.iqtree.org/. The ModelTamer is designed to work on both both Linux and Windows operating system. However, it is recomened to used the operating system specific version of IQTREE for performing ModelTamer. 
 
 <br />
-## Getting Started with the CodeOcean Capsule
-<br />
+
+## Getting Started with ModelTamer
 
 To perform the model selection analysis using ModelTamer on your local computer, please follow these steps:<br /><br />
 1.	Download and install R (https://www.r-project.org/) and Rstudio (https://rstudio.com/products/rstudio/download/).<br />
