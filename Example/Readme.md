@@ -1,1 +1,1 @@
-# Plants.zip contains Plants.fasta dataset.
+Plants.zip contains Plants.fasta dataset.
