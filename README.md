@@ -3,7 +3,7 @@
 # Taming the selection of optimal substitution models in Phylogenomics
 
 # ModelTamer 
-ModelTamer is an automated tool for generating small subsamples of sites, expand the subsample to match the dimension of the full MSA, and find the optimal model of substitution (manuscript in review).
+``ModelTamer`` is an automated tool for generating small subsamples of sites, expand the subsample to match the dimension of the full MSA, and find the optimal model of substitution (manuscript in review).
 <br />
 
 ## Directory Structure 
@@ -43,6 +43,7 @@ data_t            : a character input argument to specify the base code type whe
 
 ```
 <br />
+
 ```
 MT_automatic(data_path, data_type = c("DNA", "AA"), Redo = FALSE, max.iter = 2)
 
@@ -50,12 +51,12 @@ data_path         : input sequence alignment in fasta format that will be used f
 data_type         : a character input argument to specify the base code type whether the MSA contains DNA ("DNA") or amino acid ("AA") sequences.
 Redo              : a logical input argument to specify the program to re-check the estimated otimal model found in first step by increasing the subsample size. 
 max.iter          : a numeric input argument that specifies the number of steps to be performed by ModelTamer by increasing the subsample size.
+
 ```
 
 ModelTamer uses ModelFinder from IQTREE by default for performing calculating the Maximum Likelihood (ML) fit for each of the model tested. The IQTREE software can be downloaded from http://www.iqtree.org/. The ModelTamer is designed to work on both both Linux and Windows operating system. However, it is recomened to used the operating system specific version of IQTREE for performing ModelTamer. 
 
 <br />
-
 ## Getting Started with the CodeOcean Capsule
 <br />
 
@@ -71,13 +72,70 @@ To perform the model selection analysis using ModelTamer on your local computer,
 install.packages("BiocManager")
 BiocManager::install("Biostrings")
 install.packages("stringr")
-install.packages("ape")
-install.packages("phangorn")
 ``` 
 
-## Reproducible Run
-1. Set the ``Runme(MT_automatic).R`` as the file to run in CodeOcean. 
-2. Click on the ``Reproducible Run`` button to perform the ModelTamer analysis.
+<br />
 
-## Github Repository
-All the R codes and other instructions essential for ModelTamer analyses on a local computer are provided in the [Github Repository](https://github.com/ssharma2712/ModelTamer).
+## ModelTamer Analyses for the Example Dataset:
+
+<br />
+To create SU dataset for the example Plants MSA, please follow these steps:<br /><br />
+1.	Download the ``Example`` directory on the local computer. <br />
+2.	Run the function in the R session by typing 
+
+```R
+MT_sampler("~/Example/Plants.fas", g = 0.1, s = 1, r = 1)
+```
+
+This function will create a directory in the working directory:
+
+```
+MT_Subsample_g_0.1
+```
+
+The directory will contain one SU dataset. For example 
+
+```
+Plants_sub_1up_1.fasta
+
+```
+3.	Find the best-fit model for the given SU dataset by using:<br />
+
+``` 
+iqtree -s ~/Example/MT_Subsample_g_0.1/Plants_sub_1up_1.fasta -m MF
+```
+
+The .log and .iqtree file will be restored in the ``MT_Subsample_g_0.1`` folder like Plants_sub_1up_1.fasta.log and Plants_sub_1up_1.fasta.iqtree. <br /><br />
+4.	For the final step, type 
+
+```R
+MT_aggregator("~/Example/MT_Subsample_g_0.1/Plants_sub_1up_1.fasta.log", "~/Example/MT_Subsample_g_0.1/Plants_sub_1up_1.fasta.iqtree", data_t = "DNA" )
+```
+The function will output a text file with ModelTamer analysis information, and the name of the output will be `` MT_output.txt``.<br />
+
+<br />
+
+## Automated ModelTamer Analyses for the Example Dataset:
+
+```R
+MT_automatic("~/Example/Plants.fas", data_type = "DNA", Redo = FALSE, max.iter = 2 )
+```
+This function will select model for the Plants dataset automatically and output ``MT_output.txt`` which contains the final model selected by ``ModelTamer``.
+
+#### Software and Packages' Version:
+
+<br />
+
+All R codes were tested using R version 3.6.3 in R studio (version 1.2.5033).
+<br />  
+R packages used:
+<br />
+
+```
+-BiocManager (version 1.30.10)
+-Biostrings  (version 2.54.0)
+-stringr     (version 1.4.0)
+```
+
+<br />
+<br />
