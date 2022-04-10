@@ -64,8 +64,8 @@ To perform the model selection analysis using ModelTamer on your local computer,
 1.	Download and install R (https://www.r-project.org/) and Rstudio (https://rstudio.com/products/rstudio/download/).<br />
 2.	Download the github repository containing R codes and the example dataset on the local computer. <br />
 3.	In the Rstudio session, type ``setwd(“directory path”)`` to change the working directory to the folder that contains ``MT_sampler.R``, ``MT_aggregator.R``, and and ``MT_automatic.R`` function<br />
-4.	Type ``source(lb_sampler.R)``, and ``source(lb_aggregator.R)`` or  ``source(lb_precision.R)`` to make these functions available in the global environment. <br />
-5.	Download and install an ML tree inference software (e.g., IQ-TREE). <br />
+4.	Type ``source(MT_sampler.R)``, and ``source(MT_aggregator.R)`` or  ``source(MT_automatic.R)`` to make these functions available in the global environment. <br />
+5.	Download and install an Model selection software software (e.g., IQ-TREE). <br />
 6.	Install the following R packages if thay are not installed. 
 
 ```R
