@@ -176,19 +176,19 @@ a2 <- merge(a, a2)
 
   if(Redo == "FALSE"){
     
-    SU_name1 <- paste(SU_name_base, "_g_", g_est, ".fasta", sep = "")
+    SU_name1 <- paste("Example/",SU_name_base, "_g_", g_est, ".fasta", sep = "")
     MT_sampler_auto(motherfile, num_of_dsp = num_of_dsp, distinct_positions = distinct_positions,
                     g = g_est, SU_name = SU_name1, sln = sln)
     
     if(as.character(Sys.info()[1]) == "Windows"){
-      ex_cmd <- paste("/Example/iqtree -s", SU_name1, "-m MF -nt 1 -quiet",  sep = " " )
+      ex_cmd <- paste("Example/iqtree -s", SU_name1, "-m MF -nt 1 -quiet",  sep = " " )
       system(ex_cmd)
     }else{
       ex_cmd <- paste("/Example/iqtree -s", SU_name1, "-m MF -nt 1 -quiet",  sep = " " )
       system(ex_cmd)
     }
     
-    MT_aggregator(paste("/Example/", SU_name1, ".log", sep = ""), paste("/Example/", SU_name1, ".iqtree", sep = ""), data_t = data_type, num_of_dsp = num_of_dsp)
+    MT_aggregator(paste(SU_name1, ".log", sep = ""), paste(SU_name1, ".iqtree", sep = ""), data_t = data_type, num_of_dsp = num_of_dsp)
     
     
   }else{
@@ -198,24 +198,24 @@ a2 <- merge(a, a2)
     g1 <- g1[1:max.iter]
     
     for(i in 1:length(g1)){
-      SU_name1 <- paste(SU_name_base, "_g_", g1[i], ".fasta", sep = "")
+      SU_name1 <- paste("Example/", SU_name_base, "_g_", g1[i], ".fasta", sep = "")
       MT_sampler_auto(motherfile, num_of_dsp = num_of_dsp, distinct_positions = distinct_positions, g = g1[i], SU_name = SU_name1, sln = sln)
       
       if(as.character(Sys.info()[1]) == "Windows"){
-        ex_cmd <- paste("/Example/iqtree -s", SU_name1, "-m MF -nt 1 -quiet",  sep = " " )
+        ex_cmd <- paste("Example/iqtree -s", SU_name1, "-m MF -nt 1 -quiet",  sep = " " )
         system(ex_cmd)
       }else{
         ex_cmd <- paste("/Example/iqtree -s", SU_name1, "-m MF -nt 1 -quiet",  sep = " " )
         system(ex_cmd)
       }  # else
-    temp <- readLines(paste("/Example/", SU_name1, ".log", sep = ""))
+    temp <- readLines(paste(SU_name1, ".log", sep = ""))
     cline <- which (temp == grep(pattern = "CPU time for ModelFinder:", temp, value = TRUE))
     ct <- as.numeric(sapply(temp[cline], function(x){unlist(strsplit(x, "\\s+"))})[5])
     wt <- as.numeric(sapply(temp[cline+1], function(x){unlist(strsplit(x, "\\s+"))})[5])
     MT_time <- MT_time + c(ct, wt)
 
     }    # for loop
-  MT_aggregator(paste("/Example/", SU_name1, ".log", sep = ""), paste("/Example/", SU_name1, ".iqtree", sep = ""), data_t = data_type, num_of_dsp = num_of_dsp, MT_time = MT_time)
+  MT_aggregator(paste(SU_name1, ".log", sep = ""), paste(SU_name1, ".iqtree", sep = ""), data_t = data_type, num_of_dsp = num_of_dsp, MT_time = MT_time)
 
   }      # else
 
