@@ -63,15 +63,16 @@ ModelTamer uses ModelFinder from IQTREE by default for performing calculating th
 To perform the model selection analysis using ModelTamer on your local computer, please follow these steps:<br /><br />
 1.	Download and install R (https://www.r-project.org/) and Rstudio (https://rstudio.com/products/rstudio/download/).<br />
 2.	Download the github repository containing R codes and the example dataset on the local computer. <br />
-3.	In the Rstudio session, type ``setwd(“directory path”)`` to change the working directory to the folder that contains ``MT_sampler.R``, ``MT_aggregator.R``, and and ``MT_automatic.R`` function<br />
-4.	Type ``source(MT_sampler.R)``, and ``source(MT_aggregator.R)`` or  ``source(MT_automatic.R)`` to make these functions available in the global environment. <br />
-5.	Download and install an Model selection software software (e.g., IQ-TREE). <br />
+3.	In the Rstudio session, type ``setwd(“directory path”)`` to change the working directory to the folder that contains Code and Example folder. function<br />
+4.	Type ``source(Code/MT_sampler.R)``, and ``source(Code/MT_aggregator.R)`` or  ``source(Code/MT_automatic.R)`` to make these functions available in the global environment. <br />
+5.	Download and install a Model selection software software (e.g., IQ-TREE). <br />
 6.	Install the following R packages if thay are not installed. 
 
 ```R
 install.packages("BiocManager")
 BiocManager::install("Biostrings")
 install.packages("stringr")
+install.packages("lubridate")
 ``` 
 
 <br />
@@ -80,7 +81,7 @@ install.packages("stringr")
 
 <br />
 To create SU dataset for the example Plants MSA, please follow these steps:<br /><br />
-1.	Download the ``Example`` directory on the local computer. <br />
+1.	Download the ``ModelTamer`` repository and unzip the Plants.zip in the Example folder. <br />
 2.	Run the function in the R session by typing 
 
 ```R
@@ -135,6 +136,7 @@ R packages used:
 -BiocManager (version 1.30.10)
 -Biostrings  (version 2.54.0)
 -stringr     (version 1.4.0)
+-lubridate   (version 1.8.0)
 ```
 
 <br />
