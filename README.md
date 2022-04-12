@@ -81,7 +81,7 @@ install.packages("lubridate")
 
 <br />
 To create SU dataset for the example Plants MSA, please follow these steps:<br /><br />
-1.	Download the `ModelTamer` repository and unzip the Plants.zip in the Example folder. <br />
+1.	Download the ``ModelTamer`` repository and unzip the Plants.zip in the Example folder. <br />
 2.	Run the function in the R session by typing 
 
 ```R
